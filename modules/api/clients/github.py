@@ -15,3 +15,9 @@ class GitHub:
         body = r.json()
 
         return body
+    
+    def user_follows_target_user (self, username, target_user):
+        r = requests.get(f"https://api.github.com/users/{username}/following/{target_user}")
+        code = r.status_code
+
+        return code
