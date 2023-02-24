@@ -1,6 +1,6 @@
 import pytest
 from modules.api.clients.github import GitHub
-
+from modules.ui.page_objects.sign_in_page import SignInPage
 
 class User:
 
@@ -31,3 +31,14 @@ def user():
 def github_api():
     api = GitHub()
     yield api
+
+
+@pytest.fixture
+def sign_in_page():
+    sign_in_page = SignInPage()
+    sign_in_page.go_to()
+
+    yield sign_in_page
+
+    sign_in_page.close()
+
