@@ -26,9 +26,6 @@ class SignInPage(BasePage):
     def click_forgot_password(self):
         forgot_password_link = self.driver.find_element(By.XPATH, '//*[@id="login"]/div[4]/form/div/a')
         forgot_password_link.click()
-
-    def check_title(self, expected_title):
-        return self.driver.title == expected_title
     
     def check_error_message(self, expected_error):
         error_elem = self.driver.find_element(By.CLASS_NAME, "js-flash-alert")
