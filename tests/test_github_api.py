@@ -17,7 +17,7 @@ def test_user_not_exists(github_api):
 @pytest.mark.api
 def test_repo_can_be_found(github_api):
     r = github_api.search_repo('become-qa-auto')
-    assert r['total_count'] == 32
+    assert r['total_count'] == 37
 
 
 @pytest.mark.api
@@ -27,6 +27,13 @@ def test_repo_cannot_be_found(github_api):
 
 
 @pytest.mark.api
+def test_user_follows_target_user(github_api):
+    code = github_api.user_follows_target_user('defunkt', 'satyanadella')
+    assert code == 204 
+
+
+@pytest.mark.api
 def test_user_doesnt_follow_target_user(github_api):
-    code = github_api.user_follows_target_user ('LinBaltsatu', 'defunkt')
+    code = github_api.user_follows_target_user('LinBaltsatu', 'defunkt')
     assert code == 404 
+
